@@ -1,0 +1,16 @@
+.{
+    .name = .scoundrill_tablet,
+    .version = "0.1.0",
+    .fingerprint = 0x81a02b430f96a0af,
+    .minimum_zig_version = "0.16.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "ziggify/native/pressure.zig",
+        "README.md",
+        "LICENSE",
+        "LICENSE-ZIGGIFY",
+        "ATTRIBUTION.md",
+        "reference/upstream.json",
+    },
+}

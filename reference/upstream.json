@@ -1,0 +1,12 @@
+{
+  "tag": "v6.0.5",
+  "revision": "1706bc8e0469b330017001fe9ddf89ddbfe15950",
+  "files": {
+    "libs/image/kis_cubic_curve.cpp": "d74c943732769a0c474beac2dedb8c4b7ef29eb3efdffa753c7ab95e09a9cda6",
+    "libs/image/kis_cubic_curve.h": "384baea9211bcce3ff71ebb5f1c52f981b3d761424078fc860125db1352e5066",
+    "libs/image/kis_cubic_curve_spline.h": "b89b5face7f84553e0b81a25ed6b8a6c10af46b644c47e81dbb0e1d86146d9c4",
+    "libs/ui/tool/kis_painting_information_builder.cpp": "13d915a568372400c0d2566abbe6eda35ce1de42633be4c849aa24d7cd80c756",
+    "libs/flake/KoPointerEvent.cpp": "a71fbe0ee75f2060ffcc996954d7f335c2e10a147d09edf899bc4642900bd580",
+    "LICENSES/GPL-2.0-or-later.txt": "606aa26338f69ce178f1cbc648b7574aec4b5bbaeb20f4df36ff49010cb8fbbd"
+  }
+}

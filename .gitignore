@@ -1,0 +1,6 @@
+.oracle/
+.zig-cache/
+zig-out/
+__pycache__/
+ziggify/analysis.json
+ziggify/bench-report.json

@@ -1,0 +1,489 @@
+{
+  "version": 1,
+  "passed": 24,
+  "total": 24,
+  "fallbacks": 0,
+  "shadow_mismatches": 0,
+  "cases": [
+    {
+      "name": "identity",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwxMzAwMDAwMCw2MjUwMDAwMCwxMjQ5MDAwMDAsMjAwMDAwMDAwLDI1MDAwMDAwMCwzOTk5MDAwMDAsNTAwMDAwMDAwLDUwMDAxMDAwMCw3NTAwMDAwMDAsOTMwMDAwMDAwLDk5OTAwMDAwMCwxMDAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwxMzAwMDAwMCw2MjUwMDAwMCwxMjQ5MDAwMDAsMjAwMDAwMDAwLDI1MDAwMDAwMCwzOTk5MDAwMDAsNTAwMDAwMDAwLDUwMDAxMDAwMCw3NTAwMDAwMDAsOTMwMDAwMDAwLDk5OTAwMDAwMCwxMDAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "pressure-upstroke",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwwLDI2NDc1MSwxMDQ3NDI1OCw1MDAwMDYyMyw5OTMzMTAzMCwzMzI1ODA2MDQsNTIyNDYyMzEyLDUyMjQ4MTQwMyw5MDA1MDc3NDcsOTg3MTAxNjA2LDk5OTgzMzkxNiwxMDAwMDAwMDAwLDEwMDAwMDAwMDAsOTk5ODMzOTE2LDk4NzEwMTYwNiw5MDA1MDc3NDcsNTIyNDgxNDAzLDUyMjQ2MjMxMiwzMzI1ODA2MDQsOTkzMzEwMzAsNTAwMDA2MjMsMTA0NzQyNTgsMjY0NzUxLDAsMCwwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwwLDI2NDc1MSwxMDQ3NDI1OCw1MDAwMDYyMyw5OTMzMTAzMCwzMzI1ODA2MDQsNTIyNDYyMzEyLDUyMjQ4MTQwMyw5MDA1MDc3NDcsOTg3MTAxNjA2LDk5OTgzMzkxNiwxMDAwMDAwMDAwLDEwMDAwMDAwMDAsOTk5ODMzOTE2LDk4NzEwMTYwNiw5MDA1MDc3NDcsNTIyNDgxNDAzLDUyMjQ2MjMxMiwzMzI1ODA2MDQsOTkzMzEwMzAsNTAwMDA2MjMsMTA0NzQyNTgsMjY0NzUxLDAsMCwwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "pressure-light",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwzODM5MzAzOSwxODM0MDM0MTEsMzU5MTQyODM5LDU1MDQ2MjUwMSw2NTk2OTMyODcsODY4MDQyNzM5LDkyMTY2NjY2Nyw5MjE2Njk2NDgsOTQ0NTg5MTIwLDk4MTMxMTY1NSw5OTk3MjkxNjgsMTAwMDAwMDAwMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwzODM5MzAzOSwxODM0MDM0MTEsMzU5MTQyODM5LDU1MDQ2MjUwMSw2NTk2OTMyODcsODY4MDQyNzM5LDkyMTY2NjY2Nyw5MjE2Njk2NDgsOTQ0NTg5MTIwLDk4MTMxMTY1NSw5OTk3MjkxNjgsMTAwMDAwMDAwMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "smooth-valley",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMDAsMTAwMDAwMDAwMCw5NjEwMDg4MjAsODEzNDc2NTYzLDYzMzA5Mzg5Niw0MzIwMDAzNjYsMzEyNTAwMDAwLDU2MTA5MTkyLDAsNTksMzEyNTAwMDAwLDc5MTM3MjE3NCw5OTcwMDAwMDQsMTAwMDAwMDAwMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMDAsMTAwMDAwMDAwMCw5NjEwMDg4MjAsODEzNDc2NTYzLDYzMzA5Mzg5Niw0MzIwMDAzNjYsMzEyNTAwMDAwLDU2MTA5MTkyLDAsNTksMzEyNTAwMDAwLDc5MTM3MjE3NCw5OTcwMDAwMDQsMTAwMDAwMDAwMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "corner-valley",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMDAsMTAwMDAwMDAwMCw5NzQwMDAwMDAsODc1MDAwMDAwLDc1MDIwMDAwMCw2MDAwMDAwMDAsNTAwMDAwMDAwLDIwMDIwMDAwMCwwLDIwMDAwLDUwMDAwMDAwMCw4NjAwMDAwMDAsOTk4MDAwMDAwLDEwMDAwMDAwMDBdCg==",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMDAsMTAwMDAwMDAwMCw5NzQwMDAwMDAsODc1MDAwMDAwLDc1MDIwMDAwMCw2MDAwMDAwMDAsNTAwMDAwMDAwLDIwMDIwMDAwMCwwLDIwMDAwLDUwMDAwMDAwMCw4NjAwMDAwMDAsOTk4MDAwMDAwLDEwMDAwMDAwMDBdCg==",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "interior-corners",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMCwxMDAwMDAwMDAsMTA4MzU0MjcwLDE0MjU0MjYxNCwxOTk4ODg1NTQsMzAzMzg4ODU0LDM5MDM5MjU2Miw2OTg3MTM4MjUsMzY2NjY2NjY3LDM2NjYzMzMzMyw3MjY4MDAwMDAsOTAxNDgwNTMxLDkwOTkzMTA5OSw5MTAwMDAwMDBdCg==",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMCwxMDAwMDAwMDAsMTA4MzU0MjcwLDE0MjU0MjYxNCwxOTk4ODg1NTQsMzAzMzg4ODU0LDM5MDM5MjU2Miw2OTg3MTM4MjUsMzY2NjY2NjY3LDM2NjYzMzMzMyw3MjY4MDAwMDAsOTAxNDgwNTMxLDkwOTkzMTA5OSw5MTAwMDAwMDBdCg==",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "endpoints-and-signed-input",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "Wy0yMDAwMDAwMDAsLTIwMDAwMDAwMCwtMjAwMDAwMDAwLDIwMDAwMDAwMCwyMDAwMDAwMDAsMjAwMDAwMDAwLDIwMDAwMDAwMCw1MDAwMDAwMDAsODAwMDAwMDAwLDgwMDAwMDAwMCw4MDAwMDAwMDAsODAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "Wy0yMDAwMDAwMDAsLTIwMDAwMDAwMCwtMjAwMDAwMDAwLDIwMDAwMDAwMCwyMDAwMDAwMDAsMjAwMDAwMDAwLDIwMDAwMDAwMCw1MDAwMDAwMDAsODAwMDAwMDAwLDgwMDAwMDAwMCw4MDAwMDAwMDAsODAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "constant",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "Wy00MjAwMDAwMDAsNDIwMDAwMDAwLDQyMDAwMDAwMCw0MjAwMDAwMDAsNDIwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "Wy00MjAwMDAwMDAsNDIwMDAwMDAwLDQyMDAwMDAwMCw0MjAwMDAwMDAsNDIwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "overshoot-high",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwxMzA0NjkwMjMsNTk2NDg4NjM2LDk5OTYwNjg3MywxMDAwMDAwMDAwLDk5MDAwMDAwMCw3OTI4OTI5NjgsNzM3MTcxNzE3LDczNzE2ODgwMSw3OTE3MzczNzQsOTM1MDc2MzM3LDk5OTA2NDQ4NywxMDAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzAsMCwxMzA0NjkwMjMsNTk2NDg4NjM2LDk5OTYwNjg3MywxMDAwMDAwMDAwLDk5MDAwMDAwMCw3OTI4OTI5NjgsNzM3MTcxNzE3LDczNzE2ODgwMSw3OTE3MzczNzQsOTM1MDc2MzM3LDk5OTA2NDQ4NywxMDAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "overshoot-low",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMDAsMTAwMDAwMDAwMCw4Njk1MzA5NzcsNDAzNTExMzY0LDM5MzEyNywwLDEwMDAwMDAwLDIwNzEwNzAzMiwyNjI4MjgyODMsMjYyODMxMTk5LDIwODI2MjYyNiw2NDkyMzY2Myw5MzU1MTMsMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzEwMDAwMDAwMDAsMTAwMDAwMDAwMCw4Njk1MzA5NzcsNDAzNTExMzY0LDM5MzEyNywwLDEwMDAwMDAwLDIwNzEwNzAzMiwyNjI4MjgyODMsMjYyODMxMTk5LDIwODI2MjYyNiw2NDkyMzY2Myw5MzU1MTMsMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "lut-between-samples",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzI0OTI2ODY1MCwyNDk3NTYyMTcsMjUwMDAwMDAwLDI1MDAwMDAwMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzI0OTI2ODY1MCwyNDk3NTYyMTcsMjUwMDAwMDAwLDI1MDAwMDAwMF0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "empty-samples",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "W10K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "W10K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "missing-points",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "empty-curve",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "duplicate-knot",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "unordered-knots",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "knots-too-close",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "knot-spacing-limit",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "WzAsMTAwMDAwMDAwLDE5OTc1ODA1NSw5OTA0MjU4NzUsMTAwMDAwMDAwMCwxMDAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "WzAsMTAwMDAwMDAwLDE5OTc1ODA1NSw5OTA0MjU4NzUsMTAwMDAwMDAwMCwxMDAwMDAwMDAwXQo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "out-of-range-knot",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "invalid-corner",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "null-corner",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "invalid-sample",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "invalid-knot",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "invalid-root",
+      "passed": true,
+      "expected": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:3",
+        "stdout": "eyJlcnJvciI6eyJ0eXBlIjoiSW52YWxpZFJlcXVlc3QifX0K",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    }
+  ]
+}
