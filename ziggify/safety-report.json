@@ -1,7 +1,0 @@
-{
-  "version": 1,
-  "passed": true,
-  "assurance": "restricted source policy plus checked builds and allocator tests; not a formal proof",
-  "files": 6,
-  "findings": []
-}

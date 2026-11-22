@@ -6,11 +6,8 @@
     .paths = .{
         "build.zig",
         "build.zig.zon",
-        "ziggify/native/pressure.zig",
+        "src/pressure.zig",
         "README.md",
         "LICENSE",
-        "LICENSE-ZIGGIFY",
-        "ATTRIBUTION.md",
-        "reference/upstream.json",
     },
 }
