@@ -7,5 +7,5 @@ behavioral recovery. Record the application version, inputs, and observed
 outputs before claiming compatibility. Keep authored expectations distinct
 from observations.
 
-Use Zig 0.16.0. Run `zig fmt --check build.zig build.zig.zon src` and
+Use Zig 0.16.0. Run `zig fmt --check build.zig build.zig.zon src tools` and
 `zig build test` before committing.
