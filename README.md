@@ -38,3 +38,7 @@ Krita parity is unverified. Any future Ziggify baseline must come from
 black-box observations of the installed application. Krita's Tablet Tester
 reports raw input, so it can supply tablet event observations. Pressure mapping
 requires observing a path that applies the global curve, such as painting.
+
+## License
+
+Scoundrill Tablet is available under the [Apache License, Version 2.0](LICENSE).
