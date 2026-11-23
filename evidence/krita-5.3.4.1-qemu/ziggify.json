@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "transport": "cli",
+  "original": [
+    "{root}/../../zig-out/bin/tablet-probe",
+    "measure",
+    "--image-dir",
+    "{root}"
+  ],
+  "candidate": [],
+  "cases": [
+    {
+      "name": "krita-5.3.4.1-identity",
+      "args": [
+        "identity.ppm.gz",
+        "245",
+        "370",
+        "137",
+        "230",
+        "323",
+        "416",
+        "510",
+        "603",
+        "696",
+        "789"
+      ],
+      "stdin": "",
+      "stdin_base64": false,
+      "env": [],
+      "files": [],
+      "watch": [],
+      "method": "GET",
+      "path": "/",
+      "headers": [],
+      "response_headers": [
+        "content-type"
+      ],
+      "body": "",
+      "body_base64": false
+    },
+    {
+      "name": "krita-5.3.4.1-soft",
+      "args": [
+        "soft.ppm.gz",
+        "245",
+        "370",
+        "137",
+        "230",
+        "323",
+        "416",
+        "510",
+        "603",
+        "696",
+        "789"
+      ],
+      "stdin": "",
+      "stdin_base64": false,
+      "env": [],
+      "files": [],
+      "watch": [],
+      "method": "GET",
+      "path": "/",
+      "headers": [],
+      "response_headers": [
+        "content-type"
+      ],
+      "body": "",
+      "body_base64": false
+    },
+    {
+      "name": "krita-5.3.4.1-hard",
+      "args": [
+        "hard.ppm.gz",
+        "245",
+        "370",
+        "137",
+        "230",
+        "323",
+        "416",
+        "510",
+        "603",
+        "696",
+        "789"
+      ],
+      "stdin": "",
+      "stdin_base64": false,
+      "env": [],
+      "files": [],
+      "watch": [],
+      "method": "GET",
+      "path": "/",
+      "headers": [],
+      "response_headers": [
+        "content-type"
+      ],
+      "body": "",
+      "body_base64": false
+    }
+  ],
+  "timeout_ms": 10000,
+  "output_limit": 16777216,
+  "port": 18767,
+  "build": [],
+  "check": [],
+  "routes": [],
+  "units": [],
+  "lifted": false,
+  "http_routes": [],
+  "proxy_timeout_ms": 5000
+}

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "contract_sha256": "4c8de878a79d8ccb90f9ca9ff42767bb25910656d244cb262148e1272306059f",
+  "observations": [
+    {
+      "termination": "exit:0",
+      "stdout": "eCx3aWR0aF9weAoxMzcsMAoyMzAsMgozMjMsNwo0MTYsMTQKNTEwLDI0CjYwMywzNgo2OTYsNDkKNzg5LDYzCg==",
+      "stderr": "",
+      "files": [],
+      "fallbacks": 0,
+      "shadow_mismatches": 0
+    },
+    {
+      "termination": "exit:0",
+      "stdout": "eCx3aWR0aF9weAoxMzcsMQoyMzAsOQozMjMsMjIKNDE2LDM2CjUxMCw0Ngo2MDMsNTQKNjk2LDYwCjc4OSw2Mwo=",
+      "stderr": "",
+      "files": [],
+      "fallbacks": 0,
+      "shadow_mismatches": 0
+    },
+    {
+      "termination": "exit:0",
+      "stdout": "eCx3aWR0aF9weAoxMzcsMAoyMzAsMAozMjMsMQo0MTYsMgo1MTAsNwo2MDMsMjAKNjk2LDQwCjc4OSw2Mgo=",
+      "stderr": "",
+      "files": [],
+      "fallbacks": 0,
+      "shadow_mismatches": 0
+    }
+  ]
+}

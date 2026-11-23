@@ -15,7 +15,8 @@ on Linux Mint under X11. The virtual pen was driven by the Zig tablet probe.
   preset, 64 px, black, 100% opacity, and Normal mode.
 - Identity and soft each produced two byte-identical exports. The archive
   contains one valid hard export. Earlier hard runs had the Move tool
-  selected and were excluded. The hard result still needs a repeat.
+  selected and were excluded. The
+  [isolated follow-up](../krita-5.3.4.1-qemu/README.md) repeated all three curves.
 
 | Curve | Control points | Export |
 | --- | --- | --- |
