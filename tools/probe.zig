@@ -9,7 +9,7 @@ const usage =
     \\Usage:
     \\  tablet-probe plan X_START Y X_END
     \\  tablet-probe emit X_START Y X_END
-    \\  tablet-probe measure IMAGE.ppm Y_START Y_END X [X ...]
+    \\  tablet-probe measure [--image-dir DIR] IMAGE.ppm[.gz] Y_START Y_END X [X ...]
     \\
     \\plan and emit use virtual tablet coordinates from 0 to 32767.
     \\emit sends a stroke to the desktop after a three-second delay.
@@ -43,7 +43,6 @@ pub fn main(init: std.process.Init) !void {
 fn run(init: std.process.Init, args: []const [:0]const u8, out: *std.Io.Writer) !void {
     if (args.len == 0) return error.Usage;
     if (std.mem.eql(u8, args[0], "measure")) {
-        if (args.len < 5) return error.Usage;
         try measure(init, args[1..], out);
         return;
     }
@@ -78,10 +77,19 @@ fn run(init: std.process.Init, args: []const [:0]const u8, out: *std.Io.Writer) 
     try out.print("Sent {d} frames.\n", .{frames.len});
 }
 
-fn measure(init: std.process.Init, args: []const [:0]const u8, out: *std.Io.Writer) !void {
+fn measure(init: std.process.Init, arguments: []const [:0]const u8, out: *std.Io.Writer) !void {
+    const has_image_dir = arguments.len > 0 and std.mem.eql(u8, arguments[0], "--image-dir");
+    const path_prefix: usize = if (has_image_dir) 2 else 0;
+    if (arguments.len < path_prefix + 4) return error.Usage;
+    const args = arguments[path_prefix..];
+    const path = if (has_image_dir)
+        try std.fs.path.join(init.arena.allocator(), &.{ arguments[1], args[0] })
+    else
+        args[0];
     const y_start = std.fmt.parseUnsigned(usize, args[1], 10) catch return error.Usage;
     const y_end = std.fmt.parseUnsigned(usize, args[2], 10) catch return error.Usage;
-    const bytes = try std.Io.Dir.cwd().readFileAlloc(init.io, args[0], init.gpa, .limited(128 * 1024 * 1024));
+
+    const bytes = try readImage(init, path);
     defer init.gpa.free(bytes);
     const image = try ppm.Image.parse(bytes);
 
@@ -94,6 +102,21 @@ fn measure(init: std.process.Init, args: []const [:0]const u8, out: *std.Io.Writ
 
     try out.writeAll("x,width_px\n");
     for (widths) |item| try out.print("{d},{d}\n", .{ item.x, item.width });
+}
+
+fn readImage(init: std.process.Init, path: []const u8) ![]u8 {
+    const limit: std.Io.Limit = .limited(128 * 1024 * 1024);
+    const bytes = try std.Io.Dir.cwd().readFileAlloc(init.io, path, init.gpa, limit);
+    if (!std.mem.endsWith(u8, path, ".gz")) return bytes;
+    defer init.gpa.free(bytes);
+
+    var source: std.Io.Reader = .fixed(bytes);
+    var buffer: [std.compress.flate.max_window_len]u8 = undefined;
+    var gunzip = std.compress.flate.Decompress.init(&source, .gzip, &buffer);
+    return gunzip.reader.allocRemaining(init.gpa, limit) catch |err| {
+        if (gunzip.err) |detail| return detail;
+        return err;
+    };
 }
 
 test {

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "passed": 3,
+  "total": 3,
+  "fallbacks": 0,
+  "shadow_mismatches": 0,
+  "cases": [
+    {
+      "name": "krita-5.3.4.1-identity",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "eCx3aWR0aF9weAoxMzcsMAoyMzAsMgozMjMsNwo0MTYsMTQKNTEwLDI0CjYwMywzNgo2OTYsNTAKNzg5LDYyCg==",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "eCx3aWR0aF9weAoxMzcsMAoyMzAsMgozMjMsNwo0MTYsMTQKNTEwLDI0CjYwMywzNgo2OTYsNTAKNzg5LDYyCg==",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "krita-5.3.4.1-soft",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "eCx3aWR0aF9weAoxMzcsMQoyMzAsOQozMjMsMjIKNDE2LDM2CjUxMCw0Ngo2MDMsNTQKNjk2LDYwCjc4OSw2NAo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "eCx3aWR0aF9weAoxMzcsMQoyMzAsOQozMjMsMjIKNDE2LDM2CjUxMCw0Ngo2MDMsNTQKNjk2LDYwCjc4OSw2NAo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    },
+    {
+      "name": "krita-5.3.4.1-hard",
+      "passed": true,
+      "expected": {
+        "termination": "exit:0",
+        "stdout": "eCx3aWR0aF9weAoxMzcsMAoyMzAsMAozMjMsMAo0MTYsMgo1MTAsNwo2MDMsMjAKNjk2LDQwCjc4OSw2Mgo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      },
+      "actual": {
+        "termination": "exit:0",
+        "stdout": "eCx3aWR0aF9weAoxMzcsMAoyMzAsMAozMjMsMAo0MTYsMgo1MTAsNwo2MDMsMjAKNjk2LDQwCjc4OSw2Mgo=",
+        "stderr": "",
+        "files": [],
+        "fallbacks": 0,
+        "shadow_mismatches": 0
+      }
+    }
+  ]
+}

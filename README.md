@@ -32,12 +32,18 @@ zig build test
 
 ## Recovery status
 
-The pressure behavior above is Scoundrill's own contract, tested directly in
-Zig. The previous source-based reference and its recordings were retired.
-Krita parity is unverified. Any future Ziggify baseline must come from
-black-box observations of the installed application. Krita's Tablet Tester
-reports raw input, so it can supply tablet event observations. Pressure mapping
-requires observing a path that applies the global curve, such as painting.
+The mapper is tested against Scoundrill's own contract. The
+[first black-box Krita baseline](evidence/krita-5.3.4.1/README.md) captures
+raw pen input and measured stroke widths under three global curves. The
+linear mapper still differs from the observed stroke response. Tablet device
+handling and cross-platform coverage remain open.
+
+Build the probe and replay the archived measurements with Ziggify.
+
+```sh
+zig build
+ziggify replay . --original
+```
 
 ## Linux tablet probe
 
@@ -59,6 +65,10 @@ device discovery and focus before sending events. See the
 [Linux uinput documentation](https://docs.kernel.org/input/uinput.html).
 
 ### Capturing Krita behavior
+
+Run live capture in a dedicated Linux VM with Krita and `/dev/uinput` inside
+the guest. Virtual tablet events are delivered to the desktop that owns the
+device. Replaying the archived exports requires neither Krita nor device access.
 
 1. Open Krita's Tablet Tester and replay the stroke entirely inside its drawing
    area. Save the text log and check that it shows pen contact, rising pressure,
