@@ -56,7 +56,7 @@ zig-out/bin/tablet-probe compare-pressure \
 ```
 
 An optional last argument applies a maximum absolute error tolerance. For
-example, `0.000001` currently returns a failing status and prints the
+example, `0.000001` enforces the accepted tolerance and prints the
 worst sample for each curve. The tolerance refers to normalized pressure,
 while the earlier black-box experiment used rendered stroke pixels.
 
@@ -76,6 +76,6 @@ All 8,396 recorded pairs pass at an absolute normalized pressure tolerance of
 curve. Run `zig build parity` to enforce this comparison on both trace files.
 Error columns use scientific notation to preserve small differences.
 
-This validates the eight recorded curve configurations and the live events
-from two of them. Fresh source-reference captures for closely spaced anchors,
-sharp transitions, and corner flags remain outside this validation.
+This capture validates eight curve configurations and live events from two
+of them. The [final VM capture](../krita-5.3.4.1-pressure-final/README.md) extends
+the accepted pressure scope to tight anchors, sharp transitions, and corner flags.

@@ -27,6 +27,7 @@ pub fn build(b: *std.Build) void {
         for ([_][]const u8{
             "evidence/krita-5.3.4.1-instrumented/component-trace.json",
             "evidence/krita-5.3.4.1-instrumented/runtime-trace.json",
+            "evidence/krita-5.3.4.1-pressure-final/trace.json",
         }) |path| {
             const replay = b.addRunArtifact(probe);
             replay.addArg("compare-pressure");

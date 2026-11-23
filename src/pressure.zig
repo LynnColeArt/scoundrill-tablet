@@ -7,6 +7,9 @@ pub const max_points = 32;
 pub const Point = struct {
     x: f64,
     y: f64,
+    /// Break derivative continuity at this anchor using natural boundaries
+    /// on the adjoining spline sections. Endpoint flags have no effect.
+    corner: bool = false,
 };
 
 pub const table_intervals = 1024;
@@ -57,16 +60,20 @@ pub const PressureCurve = struct {
         const lower: usize = @intFromFloat(@floor(position));
         const upper: usize = @intFromFloat(@ceil(position));
         const fraction = position - @floor(position);
+        // The reference snaps interpolation weights near a table boundary.
+        if (fraction < 1e-6) return curve.table[lower];
+        if (fraction > 1 - 1e-6) return curve.table[upper];
         return curve.table[lower] + fraction * (curve.table[upper] - curve.table[lower]);
     }
 };
 
-/// Natural endpoint conditions and a tridiagonal solve for second derivatives.
+/// Natural endpoint and corner conditions with a tridiagonal solve.
 /// f128 keeps initialization finite for arbitrarily close valid f64 anchors.
 fn secondDerivatives(points: []const Point) [max_points]f128 {
     var upper: [max_points]f128 = @splat(0);
     var second: [max_points]f128 = @splat(0);
     for (1..points.len - 1) |i| {
+        if (points[i].corner) continue;
         const left_width = @as(f128, points[i].x) - points[i - 1].x;
         const right_width = @as(f128, points[i + 1].x) - points[i].x;
         const left_slope = (@as(f128, points[i].y) - points[i - 1].y) / left_width;
@@ -151,4 +158,50 @@ test "validates curve anchors and pressure" {
     const curve = try PressureCurve.init(&.{ .{ .x = 0, .y = 0 }, .{ .x = 1, .y = 1 } });
     try std.testing.expectError(error.InvalidPressure, curve.map(std.math.nan(f64)));
     try std.testing.expectError(error.InvalidPressure, curve.map(std.math.inf(f64)));
+}
+
+test "corner anchor joins two straight sections at a valley" {
+    const curve = try PressureCurve.init(&.{
+        .{ .x = 0, .y = 1 },
+        .{ .x = 0.5, .y = 0, .corner = true },
+        .{ .x = 1, .y = 1 },
+    });
+    try std.testing.expectEqual(@as(f64, 0.5), try curve.map(0.25));
+    try std.testing.expectEqual(@as(f64, 0), try curve.map(0.5));
+    try std.testing.expectEqual(@as(f64, 0.5), try curve.map(0.75));
+}
+
+test "corner separates curved sections and endpoint flags have no effect" {
+    const points = [_]Point{
+        .{ .x = 0, .y = 0, .corner = true },
+        .{ .x = 0.25, .y = 0.4 },
+        .{ .x = 0.5, .y = 0.6, .corner = true },
+        .{ .x = 0.75, .y = 0.7 },
+        .{ .x = 1, .y = 1, .corner = true },
+    };
+    const joined = try PressureCurve.init(&points);
+    const left = try PressureCurve.init(points[0..3]);
+    const right = try PressureCurve.init(points[2..]);
+    for (0..table_intervals + 1) |index| {
+        const expected = if (index <= table_intervals / 2) left.table[index] else right.table[index];
+        try std.testing.expectEqual(expected, joined.table[index]);
+    }
+    var unflagged = points;
+    unflagged[0].corner = false;
+    unflagged[4].corner = false;
+    const unchanged = try PressureCurve.init(&unflagged);
+    try std.testing.expectEqualSlices(f64, &joined.table, &unchanged.table);
+}
+
+test "lookup snaps weights immediately beside a grid boundary" {
+    const curve = try PressureCurve.init(&.{
+        .{ .x = 0, .y = 0 },
+        .{ .x = 0.5, .y = 0.2 },
+        .{ .x = 0.500244140625, .y = 0.8 },
+        .{ .x = 1, .y = 1 },
+    });
+    const grid: f64 = 512;
+    try std.testing.expectEqual(curve.table[512], try curve.map((grid + 5e-7) / table_intervals));
+    try std.testing.expectEqual(curve.table[512], try curve.map((grid - 5e-7) / table_intervals));
+    try std.testing.expect((try curve.map((grid + 2e-6) / table_intervals)) != curve.table[512]);
 }

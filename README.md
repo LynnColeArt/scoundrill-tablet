@@ -22,7 +22,9 @@ const mapped = try curve.map(0.52);
 
 The curve accepts 1–32 anchors. Both coordinates must be in `[0, 1]`, and the
 X coordinates must strictly increase. Three or more anchors define a natural
-cubic spline with zero second derivative at each endpoint. Initialization
+cubic spline with zero second derivative at each endpoint. An anchor with
+`corner = true` joins independent natural spline sections at that point.
+Endpoint corner flags have no effect. Initialization
 samples it at 1,025 uniformly spaced pressures and clamps each sample to
 `[0, 1]`. Mapping interpolates adjacent table entries in constant time.
 The spline can overshoot the heights of neighboring anchors. Two anchors
@@ -53,8 +55,10 @@ coverage remain open.
 [Direct pressure traces](evidence/krita-5.3.4.1-instrumented/README.md) isolate
 the global mapping from brush rendering. The production natural spline and
 lookup table pass all 8,396 archived input/output pairs at an absolute normalized pressure tolerance of `1e-6`.
-This establishes agreement on the recorded inputs. Fresh reference captures
-for closely spaced anchors and sharp transitions remain future validation.
+The [final VM capture](evidence/krita-5.3.4.1-pressure-final/README.md) adds
+26,987 observations for closely spaced anchors, sharp transitions, and corner
+flags. All 35,383 direct pairs pass at `1e-6`, closing pressure mapping parity
+for this recorded scope. Device delivery and other tablet sensors remain open.
 
 Build the probe and replay the archived measurements with Ziggify.
 
