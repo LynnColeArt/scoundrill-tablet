@@ -4,9 +4,11 @@ const std = @import("std");
 const stroke = @import("stroke.zig");
 const uinput = @import("uinput.zig");
 const ppm = @import("ppm.zig");
+const evaluation = @import("evaluate-pressure.zig");
 
 const usage =
     \\Usage:
+    \\  tablet-probe compare CAPTURE.json
     \\  tablet-probe plan X_START Y X_END
     \\  tablet-probe emit X_START Y X_END
     \\  tablet-probe measure [--image-dir DIR] IMAGE.ppm[.gz] Y_START Y_END X [X ...]
@@ -42,6 +44,11 @@ pub fn main(init: std.process.Init) !void {
 
 fn run(init: std.process.Init, args: []const [:0]const u8, out: *std.Io.Writer) !void {
     if (args.len == 0) return error.Usage;
+    if (std.mem.eql(u8, args[0], "compare")) {
+        if (args.len != 2) return error.Usage;
+        try evaluation.compare(init.io, init.gpa, args[1], out);
+        return;
+    }
     if (std.mem.eql(u8, args[0], "measure")) {
         try measure(init, args[1..], out);
         return;
@@ -89,7 +96,7 @@ fn measure(init: std.process.Init, arguments: []const [:0]const u8, out: *std.Io
     const y_start = std.fmt.parseUnsigned(usize, args[1], 10) catch return error.Usage;
     const y_end = std.fmt.parseUnsigned(usize, args[2], 10) catch return error.Usage;
 
-    const bytes = try readImage(init, path);
+    const bytes = try ppm.readFile(init.io, init.gpa, path);
     defer init.gpa.free(bytes);
     const image = try ppm.Image.parse(bytes);
 
@@ -102,21 +109,6 @@ fn measure(init: std.process.Init, arguments: []const [:0]const u8, out: *std.Io
 
     try out.writeAll("x,width_px\n");
     for (widths) |item| try out.print("{d},{d}\n", .{ item.x, item.width });
-}
-
-fn readImage(init: std.process.Init, path: []const u8) ![]u8 {
-    const limit: std.Io.Limit = .limited(128 * 1024 * 1024);
-    const bytes = try std.Io.Dir.cwd().readFileAlloc(init.io, path, init.gpa, limit);
-    if (!std.mem.endsWith(u8, path, ".gz")) return bytes;
-    defer init.gpa.free(bytes);
-
-    var source: std.Io.Reader = .fixed(bytes);
-    var buffer: [std.compress.flate.max_window_len]u8 = undefined;
-    var gunzip = std.compress.flate.Decompress.init(&source, .gzip, &buffer);
-    return gunzip.reader.allocRemaining(init.gpa, limit) catch |err| {
-        if (gunzip.err) |detail| return detail;
-        return err;
-    };
 }
 
 test {

@@ -1,0 +1,19 @@
+{
+  "input_pressures": [0.116, 0.243, 0.369, 0.495, 0.621, 0.748, 0.874, 0.999],
+  "columns": [137, 230, 323, 416, 510, 603, 696, 789],
+  "y_start": 245,
+  "y_end": 370,
+  "identity_image": "identity.ppm.gz",
+  "curves": [
+    {
+      "name": "asymmetric",
+      "points": [{"x": 0, "y": 0}, {"x": 0.18, "y": 0.08}, {"x": 0.65, "y": 0.82}, {"x": 1, "y": 1}],
+      "image": "asymmetric.ppm.gz"
+    },
+    {
+      "name": "near-flat",
+      "points": [{"x": 0, "y": 0}, {"x": 0.3, "y": 0.46}, {"x": 0.65, "y": 0.53}, {"x": 1, "y": 1}],
+      "image": "near-flat.ppm.gz"
+    }
+  ]
+}

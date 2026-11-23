@@ -21,10 +21,15 @@ const mapped = try curve.map(0.52);
 ```
 
 The curve accepts 1–32 anchors. Both coordinates must be in `[0, 1]`, and the
-X coordinates must strictly increase. It interpolates linearly between anchors
-and holds the endpoint values outside their span. A one-anchor curve is
-constant. The mapping accepts finite pressure values and uses no heap
-allocations.
+X coordinates must strictly increase. The curve uses a shape-preserving
+piecewise cubic Hermite interpolant for three or more anchors. It passes
+through every anchor, stays within the adjacent Y values, and uses a common
+slope at each interior anchor. Two anchors produce a straight line and one
+produces a constant. Values outside the anchor span use the nearest endpoint.
+Mapping accepts finite pressure values and uses no heap allocations.
+
+The implementation uses the [Fritsch–Butland slope rule](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.PchipInterpolator.html)
+with one-sided endpoint estimates.
 
 ```sh
 zig build test
@@ -35,7 +40,7 @@ zig build test
 The mapper is tested against Scoundrill's own contract. The
 [first black-box Krita baseline](evidence/krita-5.3.4.1/README.md) captures
 raw pen input and measured stroke widths under three global curves. The
-linear mapper still differs from the observed stroke response. An
+previous linear mapper differed from the observed stroke response. An
 [isolated QEMU repeat](evidence/krita-5.3.4.1-qemu/README.md) produced two
 byte-identical exports per curve. Tablet device handling and cross-platform
 coverage remain open.

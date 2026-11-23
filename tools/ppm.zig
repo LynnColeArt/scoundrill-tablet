@@ -2,6 +2,21 @@
 
 const std = @import("std");
 
+pub fn readFile(io: std.Io, allocator: std.mem.Allocator, path: []const u8) ![]u8 {
+    const limit: std.Io.Limit = .limited(128 * 1024 * 1024);
+    const bytes = try std.Io.Dir.cwd().readFileAlloc(io, path, allocator, limit);
+    if (!std.mem.endsWith(u8, path, ".gz")) return bytes;
+    defer allocator.free(bytes);
+
+    var source: std.Io.Reader = .fixed(bytes);
+    var buffer: [std.compress.flate.max_window_len]u8 = undefined;
+    var gunzip = std.compress.flate.Decompress.init(&source, .gzip, &buffer);
+    return gunzip.reader.allocRemaining(allocator, limit) catch |err| {
+        if (gunzip.err) |detail| return detail;
+        return err;
+    };
+}
+
 pub const Image = struct {
     width: usize,
     height: usize,

@@ -20,6 +20,7 @@ pub fn build(b: *std.Build) void {
             .target = target,
             .optimize = optimize,
         });
+        probe_module.addImport("scoundrill_tablet", tablet);
         const probe = b.addExecutable(.{ .name = "tablet-probe", .root_module = probe_module });
         b.installArtifact(probe);
         const probe_tests = b.addTest(.{ .root_module = probe_module });
