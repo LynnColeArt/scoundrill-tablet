@@ -21,15 +21,18 @@ const mapped = try curve.map(0.52);
 ```
 
 The curve accepts 1–32 anchors. Both coordinates must be in `[0, 1]`, and the
-X coordinates must strictly increase. The curve uses a shape-preserving
-piecewise cubic Hermite interpolant for three or more anchors. It passes
-through every anchor, stays within the adjacent Y values, and uses a common
-slope at each interior anchor. Two anchors produce a straight line and one
-produces a constant. Values outside the anchor span use the nearest endpoint.
-Mapping accepts finite pressure values and uses no heap allocations.
+X coordinates must strictly increase. Three or more anchors define a natural
+cubic spline with zero second derivative at each endpoint. Initialization
+samples it at 1,025 uniformly spaced pressures and clamps each sample to
+`[0, 1]`. Mapping interpolates adjacent table entries in constant time.
+The spline can overshoot the heights of neighboring anchors. Two anchors
+define a straight line and one defines a constant. Input outside `[0, 1]`
+uses the nearest end of the table, and nonfinite input is rejected.
 
-The implementation uses the [Fritsch–Butland slope rule](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.PchipInterpolator.html)
-with one-sided endpoint estimates.
+The table owns all its storage and mapping allocates no memory. Initialization
+uses wide intermediates so very close valid anchors still produce finite
+table entries. Lookup sampling can slightly shift an off-grid anchor's output.
+The natural spline uses a standard tridiagonal solve.
 
 ```sh
 zig build test
@@ -43,18 +46,21 @@ raw pen input and measured stroke widths under three global curves. The
 previous linear mapper differed from the observed stroke response. An
 [isolated QEMU repeat](evidence/krita-5.3.4.1-qemu/README.md) produced two
 byte-identical exports per curve. In a [held-out test](evidence/krita-5.3.4.1-holdout/README.md),
-the smooth mapper reduced estimated mean stroke-width error from 1.70 px to
+the earlier shape-preserving mapper reduced estimated mean stroke-width error from 1.70 px to
 1.06 px across two new curves. Tablet device handling and cross-platform
 coverage remain open.
 
 [Direct pressure traces](evidence/krita-5.3.4.1-instrumented/README.md) isolate
-the global mapping from brush rendering. On the traced curves, the largest
-difference from the current mapper was 0.053531 on a normalized 0–1 scale.
+the global mapping from brush rendering. The production natural spline and
+lookup table pass all 8,396 archived input/output pairs at an absolute normalized pressure tolerance of `1e-6`.
+This establishes agreement on the recorded inputs. Fresh reference captures
+for closely spaced anchors and sharp transitions remain future validation.
 
 Build the probe and replay the archived measurements with Ziggify.
 
 ```sh
 zig build
+zig build parity
 ziggify replay . --original
 ziggify replay evidence/krita-5.3.4.1-qemu --original
 ziggify replay evidence/krita-5.3.4.1-holdout --original

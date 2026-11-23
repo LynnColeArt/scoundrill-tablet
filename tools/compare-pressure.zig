@@ -33,7 +33,7 @@ pub fn compare(io: std.Io, allocator: std.mem.Allocator, path: []const u8, toler
     for (cases) |item| {
         const report = try analyze(item);
         const mean = report.absolute_error_sum / @as(f64, @floatFromInt(item.samples.len));
-        try out.print("{s},{d},{d:.9},{d:.9},{d:.9},{d:.9},{d:.9}\n", .{
+        try out.print("{s},{d},{e:.9},{e:.9},{d:.9},{d:.9},{d:.9}\n", .{
             item.name, item.samples.len, mean, report.maximum_error, report.worst_raw, report.reference, report.candidate,
         });
         maximum = @max(maximum, report.maximum_error);

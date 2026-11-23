@@ -61,3 +61,21 @@ worst sample for each curve. The tolerance refers to normalized pressure,
 while the earlier black-box experiment used rendered stroke pixels.
 
 All source, instrumentation, and build artifacts were confined to the VM.
+
+## Natural spline implementation
+
+The production mapper now prepares a natural cubic spline and a 1,025-entry
+uniform lookup table. The reference traces remain the original observations.
+The earlier comparison CSVs above describe the previous shape-preserving
+mapper. The new [component comparison](natural-component-comparison.csv) and
+[live-event comparison](natural-runtime-comparison.csv) describe the production
+natural spline.
+
+All 8,396 recorded pairs pass at an absolute normalized pressure tolerance of
+`0.000001`. The worst difference is `1.176836406e-14` on the descending
+curve. Run `zig build parity` to enforce this comparison on both trace files.
+Error columns use scientific notation to preserve small differences.
+
+This validates the eight recorded curve configurations and the live events
+from two of them. Fresh source-reference captures for closely spaced anchors,
+sharp transitions, and corner flags remain outside this validation.
