@@ -47,6 +47,10 @@ the smooth mapper reduced estimated mean stroke-width error from 1.70 px to
 1.06 px across two new curves. Tablet device handling and cross-platform
 coverage remain open.
 
+[Direct pressure traces](evidence/krita-5.3.4.1-instrumented/README.md) isolate
+the global mapping from brush rendering. On the traced curves, the largest
+difference from the current mapper was 0.053531 on a normalized 0–1 scale.
+
 Build the probe and replay the archived measurements with Ziggify.
 
 ```sh
@@ -55,6 +59,7 @@ ziggify replay . --original
 ziggify replay evidence/krita-5.3.4.1-qemu --original
 ziggify replay evidence/krita-5.3.4.1-holdout --original
 zig-out/bin/tablet-probe compare evidence/krita-5.3.4.1-holdout/compare.json
+zig-out/bin/tablet-probe compare-pressure evidence/krita-5.3.4.1-instrumented/component-trace.json
 ```
 
 ## Linux tablet probe

@@ -5,10 +5,12 @@ const stroke = @import("stroke.zig");
 const uinput = @import("uinput.zig");
 const ppm = @import("ppm.zig");
 const evaluation = @import("evaluate-pressure.zig");
+const pressure_trace = @import("compare-pressure.zig");
 
 const usage =
     \\Usage:
     \\  tablet-probe compare CAPTURE.json
+    \\  tablet-probe compare-pressure TRACE.json [TOLERANCE]
     \\  tablet-probe plan X_START Y X_END
     \\  tablet-probe emit X_START Y X_END
     \\  tablet-probe measure [--image-dir DIR] IMAGE.ppm[.gz] Y_START Y_END X [X ...]
@@ -47,6 +49,15 @@ fn run(init: std.process.Init, args: []const [:0]const u8, out: *std.Io.Writer) 
     if (std.mem.eql(u8, args[0], "compare")) {
         if (args.len != 2) return error.Usage;
         try evaluation.compare(init.io, init.gpa, args[1], out);
+        return;
+    }
+    if (std.mem.eql(u8, args[0], "compare-pressure")) {
+        if (args.len < 2 or args.len > 3) return error.Usage;
+        const tolerance = if (args.len == 3)
+            std.fmt.parseFloat(f64, args[2]) catch return error.Usage
+        else
+            null;
+        try pressure_trace.compare(init.io, init.gpa, args[1], tolerance, out);
         return;
     }
     if (std.mem.eql(u8, args[0], "measure")) {
@@ -115,4 +126,5 @@ test {
     std.testing.refAllDecls(stroke);
     std.testing.refAllDecls(uinput);
     std.testing.refAllDecls(ppm);
+    std.testing.refAllDecls(pressure_trace);
 }
