@@ -1,0 +1,4 @@
+curve,linear_mae_px,smooth_mae_px,linear_max_px,smooth_max_px
+asymmetric,1.899,1.334,5.371,3.164
+near-flat,1.507,0.784,4.836,1.936
+all,1.703,1.059,5.371,3.164

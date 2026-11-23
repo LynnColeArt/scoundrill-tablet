@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "contract_sha256": "4c8de878a79d8ccb90f9ca9ff42767bb25910656d244cb262148e1272306059f",
+  "observations": [
+    {
+      "termination": "exit:0",
+      "stdout": "eCx3aWR0aF9weAoxMzcsMAoyMzAsMgozMjMsNwo0MTYsMTQKNTEwLDI0CjYwMywzNgo2OTYsNDkKNzg5LDYyCg==",
+      "stderr": "",
+      "files": [],
+      "fallbacks": 0,
+      "shadow_mismatches": 0
+    },
+    {
+      "termination": "exit:1",
+      "stdout": "",
+      "stderr": "dGFibGV0LXByb2JlOiBGaWxlTm90Rm91bmQK",
+      "files": [],
+      "fallbacks": 0,
+      "shadow_mismatches": 0
+    },
+    {
+      "termination": "exit:1",
+      "stdout": "",
+      "stderr": "dGFibGV0LXByb2JlOiBGaWxlTm90Rm91bmQK",
+      "files": [],
+      "fallbacks": 0,
+      "shadow_mismatches": 0
+    }
+  ]
+}

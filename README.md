@@ -42,7 +42,9 @@ The mapper is tested against Scoundrill's own contract. The
 raw pen input and measured stroke widths under three global curves. The
 previous linear mapper differed from the observed stroke response. An
 [isolated QEMU repeat](evidence/krita-5.3.4.1-qemu/README.md) produced two
-byte-identical exports per curve. Tablet device handling and cross-platform
+byte-identical exports per curve. In a [held-out test](evidence/krita-5.3.4.1-holdout/README.md),
+the smooth mapper reduced estimated mean stroke-width error from 1.70 px to
+1.06 px across two new curves. Tablet device handling and cross-platform
 coverage remain open.
 
 Build the probe and replay the archived measurements with Ziggify.
@@ -51,6 +53,8 @@ Build the probe and replay the archived measurements with Ziggify.
 zig build
 ziggify replay . --original
 ziggify replay evidence/krita-5.3.4.1-qemu --original
+ziggify replay evidence/krita-5.3.4.1-holdout --original
+zig-out/bin/tablet-probe compare evidence/krita-5.3.4.1-holdout/compare.json
 ```
 
 ## Linux tablet probe
